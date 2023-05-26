@@ -1,0 +1,29 @@
+{% extends 'products/base.html' %}
+{%block "content"%}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Product Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Image</th>
+        <th scope="col">Category</th>
+        <th scope="col">Show</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for  product in products  %}
+      <tr>
+        <td>{{product.name}}</td>
+        <td>{{product.price}}</td>
+        <td><img src="{{product.image_url}}" width="100px" height="100px"></td>
+        <td><a class="btn btn-danger" href="{{ product.category.show_url }}">{{product.category.name}}</a></td>
+        <td><a class="btn btn-primary" href="{{ product.show_product }}">Show</a></td>
+        <td><a class="btn btn-danger" href="{{ product.delete_product }}">Delete</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <td><a class="btn btn-primary" href="{% url 'add' %}">Add</a></td>
+
+{%endblock%}
