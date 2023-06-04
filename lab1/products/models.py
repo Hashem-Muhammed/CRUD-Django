@@ -21,6 +21,8 @@ class Category(models.Model):
     def show_url(self):
         return reverse( 'category' , args=[self.id])
 
+    def __str__(self):
+        return self.name
 
 
 class Product(models.Model):
